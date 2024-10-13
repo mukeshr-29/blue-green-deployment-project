@@ -27,7 +27,7 @@ pipeline{
         }
         stage('code testing'){
             steps{
-                sh 'mvn test -DskipTest=true'
+                sh 'mvn test -DskipTests=true'
             }
         }
         stage('trivy fs scan'){
@@ -59,14 +59,14 @@ pipeline{
         }
         stage('code build'){
             steps{
-                sh 'mvn package -DskipTest=true'
+                sh 'mvn package -DskipTests=true'
             }
         }
         stage('publish artifact to nexus'){
             steps{
                 script{
                     withMaven(globalMavenSettingsConfig: 'settings.xml', jdk: '', maven: 'maven', mavenSettingsConfig: '', traceability: true){
-                        sh 'mvn deploy -DskipTest=true'
+                        sh 'mvn deploy -DskipTests=true'
                     }
                 }
             }
