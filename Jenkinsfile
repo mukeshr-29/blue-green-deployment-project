@@ -41,9 +41,10 @@ pipeline{
                     withSonarQubeEnv('sonar-server'){
                         sh'''
                             $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=blue-green \
-                                -Dsonar.projectKey-blue-green \
+                                -Dsonar.projectKey=blue-green \
                                 -Dsonar.java.binaries=target
                         '''
+                        // sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=nodejsmysql -Dsonar.projectName=nodejsmysql"
                     }
                 }
             }
