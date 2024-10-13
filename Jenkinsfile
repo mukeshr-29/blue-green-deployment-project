@@ -40,7 +40,7 @@ pipeline{
                 script{
                     withSonarQubeEnv('sonar-server'){
                         sh'''
-                            $SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=blue-green \
+                            $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=blue-green \
                                 -Dsonar.projectKey-blue-green \
                                 -Dsonar.java.binaries=target
                         '''
